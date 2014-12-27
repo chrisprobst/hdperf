@@ -23,6 +23,11 @@ func main() {
 
 	go func() {
 		buf := make([]byte, 32*1024)
+
+		for i := range buf {
+			buf[i] = byte(i % 255)
+		}
+
 		total := 0
 		defer func() {
 			written <- total
